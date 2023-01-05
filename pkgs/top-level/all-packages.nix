@@ -2712,6 +2712,8 @@ with pkgs;
 
   bitwise = callPackage ../tools/misc/bitwise { };
 
+  miriconf = callPackage ../applications/networking/miriconf { };
+
   blanket = callPackage ../applications/audio/blanket { };
 
   brakeman = callPackage ../development/tools/analysis/brakeman { };

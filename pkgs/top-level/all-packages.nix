@@ -2716,6 +2716,8 @@ with pkgs;
 
   arguments = callPackage ../development/libraries/arguments { };
 
+  miriconf = callPackage ../applications/networking/miriconf { };
+
   argus = callPackage ../tools/networking/argus {};
 
   argus-clients = callPackage ../tools/networking/argus-clients {};

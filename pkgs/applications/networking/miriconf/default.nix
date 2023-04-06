@@ -4,10 +4,8 @@ buildGoModule rec {
   pname = "miriconf";
   version = "0.5";
 
-  src = fetchFromGitHub {
-    owner = "MiriConf";
-    repo = "miriconf-agent";
-    rev = "rf4t9NhQBgPjn06yAlziTogAOoCP0RVY8NOo3u/dREQ=";
+  src = fetchzip {
+   url="https://github.com/MiriConf/miriconf-agent.git";
     sha256 = "079136F606C3F5F2E840E22A20D52EDE9C6323F1B43C740315B18DCB4521101F";
   };
   

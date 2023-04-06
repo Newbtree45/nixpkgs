@@ -1,4 +1,4 @@
-{lib, fetchFromGitHub, buildGoModule}:
+with import <nixpkgs> {};
 
 buildGoModule rec {
   pname = "miriconf";

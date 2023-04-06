@@ -4,12 +4,11 @@ buildGoModule rec {
   pname = "miriconf";
   version = "0.5";
 
-  src = fetchFromGitHub {
-    owner = "MiriConf";
-    repo = "miriconf-agent";
-    rev = "v${version}";
-    sha256 = "SHA256-079136F606C3F5F2E840E22A20D52EDE9C6323F1B43C740315B18DCB4521101F";
+  src = fetchzip {
+    url = "https://github.com/MiriConf/miriconf-agent.git";
+    SHA256 = "079136F606C3F5F2E840E22A20D52EDE9C6323F1B43C740315B18DCB4521101F";
   };
+  vendorHash = null;
 
   meta = with lib; {
     description = "An agent for miriconf used to manage multiple devices over a network.";

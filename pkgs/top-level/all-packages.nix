@@ -7370,6 +7370,8 @@ with pkgs;
 
   faraday-agent-dispatcher = callPackage ../tools/security/faraday-agent-dispatcher { };
 
+  miriconf = callPackage ../applications/networking/miriconf { };
+
   faraday-cli = callPackage ../tools/security/faraday-cli { };
 
   fastlane = callPackage ../tools/admin/fastlane { };
@@ -13468,6 +13470,8 @@ with pkgs;
   unshield = callPackage ../tools/archivers/unshield { };
 
   unzip = callPackage ../tools/archivers/unzip { };
+
+  miriconf = callPackage ../applications/networking/miriconf { };
 
   unzipNLS = lowPrio (unzip.override { enableNLS = true; });
 

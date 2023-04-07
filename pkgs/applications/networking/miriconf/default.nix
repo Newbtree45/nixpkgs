@@ -1,4 +1,4 @@
-{ lib, fetchFromGitHub, buildGoModule }:
+{ lib, fetchzip, buildGoModule }:
 
 buildGoModule rec {
   pname = "miriconf";

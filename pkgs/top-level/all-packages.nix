@@ -2716,8 +2716,6 @@ with pkgs;
 
   arguments = callPackage ../development/libraries/arguments { };
 
-  miriconf = callPackage ../applications/networking/miriconf { };
-
   argus = callPackage ../tools/networking/argus {};
 
   argus-clients = callPackage ../tools/networking/argus-clients {};
@@ -7369,8 +7367,6 @@ with pkgs;
   fabric-installer = callPackage ../tools/games/minecraft/fabric-installer { };
 
   faraday-agent-dispatcher = callPackage ../tools/security/faraday-agent-dispatcher { };
-
-  miriconf = callPackage ../applications/networking/miriconf { };
 
   faraday-cli = callPackage ../tools/security/faraday-cli { };
 

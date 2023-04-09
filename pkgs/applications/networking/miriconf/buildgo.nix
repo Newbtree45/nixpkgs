@@ -1,6 +1,6 @@
 with import <nixpkgs> {};
 
-stdenv.mkDerivation rec {
+buildGoModule rec {
   pname = "miriconf-agent";
   version = "1.19";
 

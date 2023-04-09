@@ -1,6 +1,7 @@
 with import <nixpkgs> {};
 
 stdenv.mkDerivation rec {
+buildGoModule rec {
   pname = "miriconf-agent";
   version = "1.19";
 
@@ -18,4 +19,5 @@ stdenv.mkDerivation rec {
     description = "An agent for miriconf used to manage multiple devices over a network.";
     homepage = "https://github.com/orgs/MiriConf/repositories";
   };
+}
 }

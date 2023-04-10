@@ -11,27 +11,6 @@ stdenv.mkDerivation rec {
     sha256 = "rf4t9NhQBgPjn06yAlziTogAOoCP0RVY8NOo3u/dREQ=";
   };
 
-   nativeBuildInputs = [ pkgs.go ];
-
-  buildPhase = ''
-    mkdir -p build/go/src/github.com/MiriConf
-    ln -sfn ../../../../.. build/go/src/github.com/MiriConf/miriconf-agent
-    export GOPATH="$PWD/build/go"
-    go build github.com/MiriConf/miriconf-agent
-  '';
-
-  installPhase = ''
-    mkdir -p $out/bin
-    cp miriconf $out/bin/miriconf
-  '';
-
-  shellHook = ''
-    cd ${builtins.toString ./.}
-    mkdir -p build/go/src/github.com/MiriConf
-    ln -sfn ../../../../.. build/go/src/github.com/MiriConf/miriconf-agent
-    export GOPATH=":$PWD/build/go";
-  '';
-
   meta = with lib; {
     description = "An agent for miriconf used to manage multiple devices over a network.";
     homepage = "https://github.com/orgs/MiriConf/repositories";

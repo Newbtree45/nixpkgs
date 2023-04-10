@@ -1,16 +1,5 @@
 with import <nixpkgs> {};
 
-let
-  inherit (pkgs) stdenv buildEnv;
-
-  goPackages = buildEnv {
-    name = "go-packages";
-    paths =
-      [ 
-      ];
-  };
-in
-
 stdenv.mkDerivation rec {
   pname = "miriconf-agent";
   version = "1.19";
@@ -27,7 +16,7 @@ stdenv.mkDerivation rec {
   buildPhase = ''
     mkdir -p build/go/src/github.com/MiriConf
     ln -sfn ../../../../.. build/go/src/github.com/MiriConf/miriconf-agent
-    export GOPATH="${goPackages}:$PWD/build/go"
+    export GOPATH="$PWD/build/go"
     go build github.com/MiriConf/miriconf-agent
   '';
 
@@ -40,7 +29,7 @@ stdenv.mkDerivation rec {
     cd ${builtins.toString ./.}
     mkdir -p build/go/src/github.com/MiriConf
     ln -sfn ../../../../.. build/go/src/github.com/MiriConf/miriconf-agent
-    export GOPATH="${goPackages}:$PWD/build/go";
+    export GOPATH=":$PWD/build/go";
   '';
 
   meta = with lib; {

@@ -1,5 +1,16 @@
 with import <nixpkgs> {};
 
+let
+  inherit (pkgs) stdenv buildEnv;
+
+  goPackages = buildEnv {
+    name = "go-packages";
+    paths =
+      [ 
+      ];
+  };
+in
+
 stdenv.mkDerivation rec {
   pname = "miriconf-agent";
   version = "1.19";
@@ -10,8 +21,27 @@ stdenv.mkDerivation rec {
     rev = "b6536863bb32b4e3640a5ccbc23309f19ace5c4f";
     sha256 = "rf4t9NhQBgPjn06yAlziTogAOoCP0RVY8NOo3u/dREQ=";
   };
-  
- enableParallelBuilding = true;
+
+   nativeBuildInputs = [ pkgs.go ];
+
+  buildPhase = ''
+    mkdir -p build/go/src/github.com/MiriConf
+    ln -sfn ../../../../.. build/go/src/github.com/MiriConf/miriconf-agent
+    export GOPATH="${goPackages}:$PWD/build/go"
+    go build github.com/MiriConf/miriconf-agent
+  '';
+
+  installPhase = ''
+    mkdir -p $out/bin
+    cp miriconf $out/bin/miriconf
+  '';
+
+  shellHook = ''
+    cd ${builtins.toString ./.}
+    mkdir -p build/go/src/github.com/MiriConf
+    ln -sfn ../../../../.. build/go/src/github.com/MiriConf/miriconf-agent
+    export GOPATH="${goPackages}:$PWD/build/go";
+  '';
 
   meta = with lib; {
     description = "An agent for miriconf used to manage multiple devices over a network.";

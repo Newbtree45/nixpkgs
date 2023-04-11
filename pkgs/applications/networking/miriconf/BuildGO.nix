@@ -1,6 +1,5 @@
 with import <nixpkgs> {};
 
-let
 buildGoModule rec {
   pname = "miriconf-agent";
   version = "1.19";
@@ -19,26 +18,4 @@ buildGoModule rec {
     description = "An agent for miriconf used to manage multiple devices over a network.";
     homepage = "https://github.com/orgs/MiriConf/repositories";
   };
-}
-in
-
-stdenv.mkDerivation rec {
-  name = "miriconf-agent";
-  version = "1.19";
-
-  src = ./.;
-
-  nativeBuildInputs = [ pkgs.go ];
-
-  buildPhase = ''
-    mkdir -p build/go/src/github.com/MiriConf
-    ln -sfn ../../../../.. build/go/src/github.com/MiriConf/miriconf-agent
-    export GOPATH="${goPackages}:$PWD/build/go"
-    go build github.com/MiriConf/miriconf-agent
-  '';
-
-  installPhase = ''
-    mkdir -p $out/bin
-    cp foo $out/bin/miriconf-agent
-  '';
 }

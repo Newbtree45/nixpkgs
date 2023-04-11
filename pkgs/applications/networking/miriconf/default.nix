@@ -33,6 +33,5 @@ buildPhase = ''
   '';
   installPhase = ''
     mkdir -p $out/bin
-    cp ${miriconf}/bin/miriconf $out/bin/miriconf
   '';
 }

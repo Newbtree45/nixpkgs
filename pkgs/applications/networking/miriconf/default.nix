@@ -1,7 +1,7 @@
 with import <nixpkgs> {};
 
 let
-buildGoModule rec {
+miriconf =(buildGoModule rec {
   pname = "miriconf-agent";
   version = "1.19";
 
@@ -19,10 +19,10 @@ buildGoModule rec {
     description = "An agent for miriconf used to manage multiple devices over a network.";
     homepage = "https://github.com/orgs/MiriConf/repositories";
   };
-}
+};)
 in
 
-stdenv.mkDerivation rec {
+miriconf = stdenv.mkDerivation rec {
   name = "miriconf-agent";
   version = "1.19";
 

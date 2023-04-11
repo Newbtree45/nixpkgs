@@ -1,7 +1,7 @@
 with import <nixpkgs> {};
 
 let
-miriconf =(buildGoModule rec {
+miriconf =(buildGoModule {
   pname = "miriconf-agent";
   version = "1.19";
 
@@ -22,7 +22,7 @@ miriconf =(buildGoModule rec {
 };)
 in
 
-miriconf = stdenv.mkDerivation rec {
+miriconf = stdenv.mkDerivation{
   name = "miriconf-agent";
   version = "1.19";
 

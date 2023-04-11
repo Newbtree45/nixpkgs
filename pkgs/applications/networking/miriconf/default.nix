@@ -1,6 +1,6 @@
 with import <nixpkgs> {};
 
-miriconf = buildGoModule {
+buildGoModule rec {
   pname = "miriconf-agent";
   version = "1.19";
 
@@ -18,4 +18,4 @@ miriconf = buildGoModule {
     description = "An agent for miriconf used to manage multiple devices over a network.";
     homepage = "https://github.com/orgs/MiriConf/repositories";
   };
-};
+}

@@ -30,7 +30,6 @@ buildPhase = ''
     mkdir -p bin
     ln -sfn ../../../../.. bin/miriconf
     export GOPATH="${miriconf}/bin/miriconf"
-    go build miriconf
   '';
   installPhase = ''
     mkdir -p $out/bin

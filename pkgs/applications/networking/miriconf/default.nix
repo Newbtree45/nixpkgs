@@ -3,7 +3,6 @@ with import <nixpkgs> {};
 let
   miriconf = (buildGoModule {
   pname = "miriconf-agent";
-  version = "1.19";
 
    src = fetchFromGitHub {
     owner = "MiriConf";
@@ -24,10 +23,15 @@ let
 in
 stdenv.mkDerivation {
   name = "miriconf";
-  src = ./.;
+   src = fetchFromGitHub {
+    owner = "MiriConf";
+    repo = "miriconf-agent";
+    rev = "b6536863bb32b4e3640a5ccbc23309f19ace5c4f";
+    sha256 = "rf4t9NhQBgPjn06yAlziTogAOoCP0RVY8NOo3u/dREQ=";
+  };
   buildInputs = [ miriconf ];
   installPhase = ''
-    mkdir -p $out/bin
-    cp ${miriconf}/bin/miriconf $out/bin/miriconf
+    mkdir -p $out/blob
+    cp ${miriconf}/blob/main/main.go $out/blob/main/main.go
   '';
 }

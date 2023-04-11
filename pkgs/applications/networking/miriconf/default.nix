@@ -2,8 +2,7 @@ with import <nixpkgs> {};
 
 let
   miriconf = (buildGoModule {
-  pname = "miriconf";
-  version = "main";
+  name = "miriconf";
 
    src = fetchFromGitHub {
     owner = "MiriConf";
@@ -14,11 +13,6 @@ let
   
    vendorHash = "sha256-PfJNr7t/27PSnwIwFv0kHV3f+er0fpHwqddS8yS7ofo=";
 
-
-  meta = with lib; {
-    description = "An agent for miriconf used to manage multiple devices over a network.";
-    homepage = "https://github.com/orgs/MiriConf/repositories";
-  };
 });
 
 in
@@ -33,5 +27,6 @@ buildPhase = ''
   '';
   installPhase = ''
     mkdir -p $out/bin
+    cp ${miriconf}/bin/miriconf $out/bin/miriconf
   '';
 }

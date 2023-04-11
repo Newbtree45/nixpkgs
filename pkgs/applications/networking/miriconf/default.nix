@@ -26,8 +26,14 @@ stdenv.mkDerivation {
   name = "miriconf";
   src = ./.;
   buildInputs = [ miriconf ];
+buildPhase = ''
+    mkdir -p bin/miriconf
+    ln -sfn ../../../../.. bin/miriconf
+    export GOPATH="${miriconf}/bin/miriconf"
+    go build bin/miriconf
+  '';
   installPhase = ''
     mkdir -p $out/bin
-    cp $out/bin/miriconf
+    cp ${miriconf}/bin/miriconf $out/bin/miriconf
   '';
 }

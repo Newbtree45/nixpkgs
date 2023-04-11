@@ -28,6 +28,6 @@ stdenv.mkDerivation {
   buildInputs = [ miriconf ];
   installPhase = ''
     mkdir -p $out/bin
-    cp bin/miriconf $out/bin/miriconf
+    cp $out/bin
   '';
 }

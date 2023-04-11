@@ -21,7 +21,7 @@ stdenv.mkDerivation {
   src = ./.;
   buildInputs = [ miriconf ];
 buildPhase = ''
-    mkdir -p ${miriconf}/bin/miriconf
+    mkdir -p bin
     ln -sfn ../../../../.. bin/miriconf
     export GOPATH="${miriconf}/bin/miriconf"
   '';

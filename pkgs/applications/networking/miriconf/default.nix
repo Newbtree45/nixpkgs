@@ -3,7 +3,7 @@ with import <nixpkgs> {};
 let
   miriconf = (buildGoModule {
   pname = "miriconf-agent";
-  version = "main"
+  version = "main";
 
    src = fetchFromGitHub {
     owner = "MiriConf";
